@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     # Local
     'book',
     'user',
+    
+    # 3rd Party
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
