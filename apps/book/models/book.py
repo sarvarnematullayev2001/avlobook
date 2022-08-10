@@ -1,7 +1,8 @@
 from .genre import Genre
 from apps.core.base_model import BaseModel
-from django.contrib.gis.db import models
+from django.contrib.gis.db import models as gis_models
 from .fields import ISBNField
+from django.db import models
 
 class Book(BaseModel):
 
@@ -27,7 +28,7 @@ class Book(BaseModel):
     genre = models.ManyToManyField(Genre)
     types = models.CharField(max_length=5, choices=TYPE_BOOK)
     status = models.CharField(max_length=9, choices=STATUS, default='Olinmagan')
-    location = models.PointField() # INPUT: "point": "POINT (30 10)"
+    location = gis_models.PointField(srid=4326) # INPUT: "point": "POINT (30 10)"
     address = models.CharField(max_length=100)
     language = models.CharField(max_length=6, choices=LANGUAGE)
     isbn = ISBNField()
