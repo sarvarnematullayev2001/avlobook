@@ -1,7 +1,9 @@
 from django.db import models
-from .category import Category
+from .genre import Genre
+from apps.core.base_model import BaseModel
 
-class Book(models.Model):
+
+class Book(BaseModel):
     
     TYPE_BOOK = (
         ('Erkin', 'Erkin'), 
@@ -22,7 +24,7 @@ class Book(models.Model):
     title = models.CharField(max_length=150)
     author = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    category = models.ManyToManyField(Category)
+    genre = models.ManyToManyField(Genre)
     types = models.CharField(max_length=5, choices=TYPE_BOOK)
     status = models.CharField(max_length=9, choices=STATUS, default='Olinmagan')
     location = models.CharField(max_length=100)

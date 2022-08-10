@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from book.models import Book
-from book.serializers.category import CategorySerializer
+from apps.book.serializers.genre import GenreSerializer
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -10,5 +10,5 @@ class BookSerializer(serializers.ModelSerializer):
         fields = '__all__'
     
     def to_representation(self, instance):
-        self.fields['category'] = CategorySerializer(many=True)
+        self.fields['genre'] = GenreSerializer(many=True)
         return super(BookSerializer, self).to_representation(instance)

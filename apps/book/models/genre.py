@@ -1,11 +1,9 @@
 from django.db import models
+from apps.core.base_model import BaseModel
 
 
-class Category(models.Model):
+class Genre(BaseModel):
     name = models.CharField(max_length=150)
-    
-    class Meta:
-        verbose_name_plural = 'Categories'
     
     def __str__(self):
         return self.name
