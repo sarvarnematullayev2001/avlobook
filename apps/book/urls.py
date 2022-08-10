@@ -1,6 +1,8 @@
+# Url packages
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
+# Views
 from book.views.book import *
 from book.views.genre import *
 

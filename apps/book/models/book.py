@@ -1,8 +1,12 @@
-from .genre import Genre
+# Models
 from apps.core.base_model import BaseModel
 from django.contrib.gis.db import models as gis_models
-from .fields import ISBNField
 from django.db import models
+from .genre import Genre
+
+# Model fields
+from .fields import ISBNField
+
 
 class Book(BaseModel):
 

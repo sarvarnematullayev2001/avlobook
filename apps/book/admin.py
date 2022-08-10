@@ -1,8 +1,11 @@
-from django.contrib import admin
-from book.models import Book, Genre
+# Admin packages
 from django.contrib.gis.admin import OSMGeoAdmin
+from django.contrib import admin
 
-# Register your models here.
+# Models
+from book.models import Book, Genre
+
+
 @admin.register(Book)
 class ShopAdmin(OSMGeoAdmin):
     list_display = ('title', 'location')

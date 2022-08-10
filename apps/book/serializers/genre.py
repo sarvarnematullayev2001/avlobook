@@ -1,4 +1,7 @@
+# Serializers
 from rest_framework import serializers
+
+# Models
 from book.models import Genre
 
 

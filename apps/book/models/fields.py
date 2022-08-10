@@ -1,7 +1,11 @@
-from .validators import ISBNValidator
+# Fields
 from django.db.models import CharField
 from django.utils.translation import gettext_lazy as _
+
+# Validators
 from django.core.validators import EMPTY_VALUES
+from .validators import ISBNValidator
+
 
 class ISBNField(CharField):
 
