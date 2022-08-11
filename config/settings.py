@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # Local
     'book',
     'user',
+    'file',
 ]
 
 MIDDLEWARE = [
