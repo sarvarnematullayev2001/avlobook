@@ -21,7 +21,7 @@ class Book(BaseModel):
     author = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     genre = models.ManyToManyField(Genre)
-    types = models.CharField(max_length=5, choices=TYPE_BOOK)
+    types = models.CharField(max_length=5, choices=BOOK_TYPE)
     location = models.PointField() # INPUT: "point": "POINT (30 10)"
     address = models.CharField(max_length=100)
     language = models.CharField(max_length=6, choices=LANGUAGE)
