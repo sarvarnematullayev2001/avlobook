@@ -10,11 +10,6 @@ class Book(BaseModel):
         ('Ijara', 'Ijara')
     )
 
-    STATUS = (
-        ('Olingan', 'Olingan'),
-        ('Olinmagan', 'Olinmagan')
-    )
-
     LANGUAGE = (
         ("O'zbek", "O'zbek"),
         ("Ingliz", "Ingliz"),
@@ -26,7 +21,6 @@ class Book(BaseModel):
     description = models.TextField(null=True, blank=True)
     genre = models.ManyToManyField(Genre)
     types = models.CharField(max_length=5, choices=TYPE_BOOK)
-    status = models.CharField(max_length=9, choices=STATUS, default='Olinmagan')
     location = models.PointField() # INPUT: "point": "POINT (30 10)"
     address = models.CharField(max_length=100)
     language = models.CharField(max_length=6, choices=LANGUAGE)
@@ -38,3 +32,21 @@ class Book(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class BookInstance(BaseModel):
+
+    LOAN_STATUS = (
+        ('Olingan', 'Olingan'),
+        ('Olinmagan', 'Olinmagan')
+    )
+
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    loan_status = models.CharField(max_length=9, choices=LOAN_STATUS, default='Olinmagan')
+
+    class Meta:
+        verbose_name = 'book instance'
+        verbose_name_plural = 'book instances'
+
+    def __str__(self) -> str:
+        return self.book
