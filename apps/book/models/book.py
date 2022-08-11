@@ -3,9 +3,10 @@ from apps.core.base_model import BaseModel
 from django.contrib.gis.db import models
 from .fields import ISBNField
 
+
 class Book(BaseModel):
 
-    TYPE_BOOK = (
+    BOOK_TYPE = (
         ('Erkin', 'Erkin'),
         ('Ijara', 'Ijara')
     )
