@@ -9,6 +9,12 @@ BOOK_QUALITY = (
     ('Eski', 'Eski')
 )
 
+
+LOAN_STATUS = (
+    ('Olingan', 'Olingan'),
+    ("Olinmagan", "Olinmagan")
+)
+
 LANGUAGE = (
     ("O'zbek", "O'zbek"),
     ("Ingliz", "Ingliz"),

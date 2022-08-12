@@ -9,12 +9,12 @@ from user.models import User
 
 # Model fields
 from .fields import ISBNField
-from .choices import BOOK_TYPE, REGION, CITY, LANGUAGE, BOOK_QUALITY
+from .choices import BOOK_TYPE, REGION, CITY, LANGUAGE, BOOK_QUALITY, LOAN_STATUS
 
 
 class Book(BaseModel):
 
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user')
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='user', null=True)
     title = models.CharField(max_length=150)
     author = models.CharField(max_length=100)
     genre = models.ManyToManyField(Genre)
@@ -36,3 +36,19 @@ class Book(BaseModel):
 
     def __str__(self):
         return self.title
+
+
+class BookInstance(BaseModel):
+    
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    due_by = models.DateField()
+    loan_status = models.CharField(max_length=15, choices=LOAN_STATUS)
+    current_user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='current_user', null=True)
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='borrower', null=True)
+    
+    class Meta:
+        verbose_name = 'Book Instance'
+        verbose_name_plural = 'Book Instances'
+    
+    def __str__(self):
+        return self.book.title

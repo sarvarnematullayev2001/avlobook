@@ -6,3 +6,4 @@ media
 *.pyc
 0*.py
 .env
+__pycache__
