@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'book',
     'user',
     'file',
+    'chat',
 ]
 
 MIDDLEWARE = [
