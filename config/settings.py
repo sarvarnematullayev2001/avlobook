@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    "rest_framework_gis",
 
     # Third Party
     'rest_framework',
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     'book',
     'user',
     'file',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -77,7 +79,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'config.wsgi.application'
-# AUTH_USER_MODEL = 'user.User'
 
 
 # Database
