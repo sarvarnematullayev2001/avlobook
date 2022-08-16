@@ -13,21 +13,6 @@ from book.models.fields import ISBNField
 from book.models.choices import BOOK_TYPE, REGION, CITY, LANGUAGE, BOOK_QUALITY, LOAN_STATUS
 
 
-
-class Book(BaseModel):
-
-    BOOK_TYPE = (
-        ('Erkin', 'Erkin'),
-        ('Ijara', 'Ijara')
-    )
-
-    LANGUAGE = (
-        ("O'zbek", "O'zbek"),
-        ("Ingliz", "Ingliz"),
-        ("Rus", "Rus")
-    )
-
-
 class Book(BaseModel):
 
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='user', null=True)
