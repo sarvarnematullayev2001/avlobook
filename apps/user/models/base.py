@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from book.models.choices import REGION, CITY
+
 
 class User(AbstractUser):
     BLOCKED = 'blocked'
@@ -35,4 +37,7 @@ class User(AbstractUser):
     gender = models.CharField(max_length=20, choices=GENDER)
     birth_date = models.DateField(null=True)
     find_option = models.CharField(max_length=100)
+    description = models.CharField(max_length=255)
+    region = models.CharField(choices=REGION, max_length=50)
+    city = models.CharField(choices=CITY, max_length=50)
 
