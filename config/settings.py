@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     # Third Party
     'rest_framework',
+    'easy_thumbnails',
 
     # Local
     'book',
