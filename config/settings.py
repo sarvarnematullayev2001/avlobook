@@ -138,3 +138,8 @@ MEDIA_ROOT = os.environ.get('MEDIA_URL', os.path.join(BASE_DIR, 'media'))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'user.User'
+
+# SMS configs
+
+SMS_LOGIN = os.environ.get('SMS_LOGIN', 'novoland')
+SMS_PASSWORD = os.environ.get('SMS_PASSWORD', 'Vt2B5aF45p')
