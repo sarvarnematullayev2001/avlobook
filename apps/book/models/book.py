@@ -1,15 +1,16 @@
-# Models
-from apps.core.base_model import BaseModel
+# Django
 from django.contrib.gis.db import models as gis_models
-from file.models import File
 from django.db import models
-from .genre import Genre
+
+# Locals
+from file.models import File
+from book.models.genre import Genre
 from user.models import User
+from core.base_model import BaseModel
 
-
-# Model fields
-from .fields import ISBNField
-from .choices import BOOK_TYPE, REGION, CITY, LANGUAGE, BOOK_QUALITY, LOAN_STATUS
+# Fields
+from book.models.fields import ISBNField
+from book.models.choices import BOOK_TYPE, REGION, CITY, LANGUAGE, BOOK_QUALITY, LOAN_STATUS
 
 
 class Book(BaseModel):
@@ -39,6 +40,16 @@ class Book(BaseModel):
 
 
 class BookInstance(BaseModel):
+
+    book = models.ForeignKey(Book, on_delete=models.PROTECT)
+    loan_status = models.CharField(max_length=9, choices=LOAN_STATUS, default='Olinmagan')
+
+    class Meta:
+        verbose_name = 'book instance'
+        verbose_name_plural = 'book instances'
+
+    def __str__(self) -> str:
+        return self.book
     
     book = models.ForeignKey(Book, on_delete=models.PROTECT)
     due_by = models.DateField()
