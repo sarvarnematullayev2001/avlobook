@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Third Party
     'rest_framework',
     'rest_framework.authtoken',
+    'easy_thumbnails',
 
     # Local
     'book',
