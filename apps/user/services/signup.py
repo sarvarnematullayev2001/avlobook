@@ -1,32 +1,39 @@
-# Rest-Framework
 from rest_framework.response import Response
 from rest_framework import status
 
-# Models
 from user.models import User
+from user.services.verify import send_user_verify_code, re_send_verify_user_code
 
 
-def signup(username: str, email: str, phone_number: str, password):
-    check_phone = User.objects.filter(phone_number=phone_number).exists()
-    if check_phone is True:
-        return Response({'detail': 'phone already exists'}, status=status.HTTP_400_BAD_REQUEST)
-    check_username = User.objects.filter(username=username).exists()
-    if check_username is True:
-        return Response({'detail': 'username already exists'}, status=status.HTTP_400_BAD_REQUEST)
-    user = create_user(username, email, phone_number, password=password)
+def signup(first_name: str, last_name: str, email: str, username: str, password, birthday, about):
+    check_email = User.objects.filter(username__iexact=username)
+    if check_email.exists() is True:
+        if check_email.first().is_active is True:
+            re_send_verify_user_code(username)
+            return Response({'detail': 'please_activate_your_account'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'detail': 'username_already_exists'}, status=status.HTTP_400_BAD_REQUEST)
+
+    user = create_user(first_name, last_name, email, username, password, birthday, about)
+    send_user_verify_code(user)
     return Response({'detail': 'successfully registered'}, status=status.HTTP_201_CREATED)
 
 
 def create_user(
-        username: str,
+        first_name: str,
+        last_name: str,
         email: str,
-        phone_number: str,
-        password=None
+        username: str,
+        password=None,
+        birthday=None,
+        about=None
 ):
     user = User.objects.create(
+        first_name=first_name,
+        last_name=last_name,
         email=email,
-        phone_number=phone_number,
         username=username,
+        birthday=birthday,
+        about=about,
         is_active=False,
         is_staff=False,
         is_superuser=False,
