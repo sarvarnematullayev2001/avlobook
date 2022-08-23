@@ -37,10 +37,12 @@ class User(AbstractUser):
     
     user_status = models.CharField(max_length=20, choices=STATUS)
     user_type = models.CharField(max_length=25, choices=TYPE, default=TYPE[0][0])
-    phone_number = models.CharField(max_length=50, null=True)
+    phone_number = models.CharField(max_length=50, null=True, unique=True)
     gender = models.CharField(max_length=20, choices=GENDER)
     birth_date = models.DateField(null=True)
-    find_option = models.CharField(max_length=100)
     description = models.CharField(max_length=255)
     region = models.CharField(choices=REGION, max_length=50)
     city = models.CharField(choices=CITY, max_length=50)
+
+    def __str__(self):
+        return self.username
