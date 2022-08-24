@@ -6,6 +6,7 @@ from book.models.choices import REGION, CITY
 
 
 class User(AbstractUser):
+    
     BLOCKED = 'blocked'
     ACTIVE = 'active'
     MALE = 'male'
@@ -20,10 +21,12 @@ class User(AbstractUser):
         (BLOCKED, BLOCKED),
         (ACTIVE, ACTIVE),
     )
+    
     GENDER = (
         (MALE, MALE),
         (FEMALE, FEMALE),
     )
+    
     TYPE = (
         (USER, USER),
         (OPEN_SHELF, OPEN_SHELF),
@@ -31,13 +34,15 @@ class User(AbstractUser):
         (LIBRARY_OFFICE, LIBRARY_OFFICE),
         (LIBRARY_CAFE, LIBRARY_CAFE),
     )
+    
     user_status = models.CharField(max_length=20, choices=STATUS)
     user_type = models.CharField(max_length=25, choices=TYPE, default=TYPE[0][0])
-    phone_number = models.CharField(max_length=50, null=True)
+    phone_number = models.CharField(max_length=50, null=True, unique=True)
     gender = models.CharField(max_length=20, choices=GENDER)
     birth_date = models.DateField(null=True)
-    find_option = models.CharField(max_length=100)
     description = models.CharField(max_length=255)
     region = models.CharField(choices=REGION, max_length=50)
     city = models.CharField(choices=CITY, max_length=50)
 
+    def __str__(self):
+        return self.username

@@ -1,2 +1,3 @@
-from user.models.base import User
-from user.models.profile import Profile
+from .base import User
+from .profile import Profile
+from .verify import VerifyUser

@@ -19,7 +19,7 @@ class File(BaseModel):
     ordering = models.IntegerField(default=1)
 
     def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
+            update_fields=None):
         self.format = self.file.name.split('.')[-1]
         self.name = self.file.name if not self.name else self.name
         return super(File, self).save()
