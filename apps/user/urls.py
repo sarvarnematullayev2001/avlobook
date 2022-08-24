@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from views.notification import NotificationViewSet
+from user.views.notification import NotificationViewSet
 
 # Views
 from user.views.login import LoginAPIView

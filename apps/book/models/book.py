@@ -4,9 +4,9 @@ from django.db import models
 
 # Locals
 from file.models import File
-from book.models.genre import Genre
 from user.models.base import User
 from core.base_model import BaseModel
+from book.models.genre import Genre
 
 # Fields
 from book.models.fields import ISBNField

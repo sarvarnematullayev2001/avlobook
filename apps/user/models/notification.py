@@ -1,6 +1,7 @@
+from django.db import models
+
 from core.base_model import BaseModel
 from user.models.base import User
-from django.db import models
 from book.models.book import BookInstance
 
 

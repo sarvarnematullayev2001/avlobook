@@ -1,2 +1,2 @@
-from .book import BookSerializer
-from .genre import GenreSerializer
+from book.serializers.book import BookSerializer
+from book.serializers.genre import GenreSerializer

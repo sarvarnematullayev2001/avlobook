@@ -3,7 +3,8 @@ from django.contrib.gis.admin import OSMGeoAdmin
 from django.contrib import admin
 
 # Models
-from book.models import Book, BookInstance, Genre
+from book.models.book import Book, BookInstance
+from book.models.genre import Genre
 
 
 @admin.register(Book)

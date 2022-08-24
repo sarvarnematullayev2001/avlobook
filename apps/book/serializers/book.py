@@ -1,9 +1,9 @@
 # Serializers
 from rest_framework import serializers
-from apps.book.serializers.genre import GenreSerializer
+from book.serializers.genre import GenreSerializer
 
 # Models
-from book.models import Book, BookInstance
+from book.models.book import Book, BookInstance
 
 
 class BookSerializer(serializers.ModelSerializer):
