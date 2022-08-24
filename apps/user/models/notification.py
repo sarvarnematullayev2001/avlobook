@@ -1,7 +1,7 @@
 from core.base_model import BaseModel
-from .base import User
+from user.models.base import User
 from django.db import models
-from book.models import BookInstance
+from book.models.book import BookInstance
 
 
 class Notification(BaseModel):

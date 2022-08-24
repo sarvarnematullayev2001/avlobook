@@ -1,2 +1,2 @@
-from .book import Book, BookInstance
-from .genre import Genre
+from book.models.book import Book, BookInstance
+from book.models.genre import Genre
