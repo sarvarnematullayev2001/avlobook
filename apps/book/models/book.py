@@ -44,12 +44,10 @@ class BookInstance(BaseModel):
     book = models.ForeignKey(Book, on_delete=models.PROTECT)
     due_by = models.DateField()
     loan_status = models.CharField(max_length=15, choices=LOAN_STATUS, default='Olingan')
-    current_user = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='current_user', null=True)
     borrower = models.ForeignKey(User, on_delete=models.SET_NULL, related_name='borrower', null=True)
-    
-    class Meta:
-        verbose_name = 'Book Instance'
-        verbose_name_plural = 'Book Instances'
     
     def __str__(self):
         return self.book.title
+
+    def return_date(date):
+        return
